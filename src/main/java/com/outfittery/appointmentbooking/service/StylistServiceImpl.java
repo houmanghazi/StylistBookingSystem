@@ -50,10 +50,10 @@ public class StylistServiceImpl implements StylistService {
         Stylist firstAvailableStylist =
                 stylistRepository.findAll()
                         .stream()
-//                        .filter(stylist->
-//                            !appointments.stream()
-//                                    .anyMatch(appointment -> appointment.getStylist().getId().equals(stylist.getId()))
-//                            )
+                        .filter(stylist->
+                            !appointments.stream()
+                                    .anyMatch(appointment -> appointment.getStylist().getId().equals(stylist.getId()))
+                            )
                         .findFirst()
                         .orElseThrow(() -> new NoResourceFoundException("No available stylist found at specified time"));
         return firstAvailableStylist;
